@@ -1,0 +1,195 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    :root{
+        --primary: rgb(55, 57, 56);
+        --secondary: rgb(66, 91, 76);
+        --grey: rgb(124, 129, 126);
+        --light-grey: rgb(105, 119, 113);
+        --glass: rgba(255, 255, 255, 0.1);
+        --glass-border: rgba(255, 255, 255, 0.5);
+    }
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+    .welcomeMessage {
+        position: relative;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 20px;
+        border: 1px solid var(--glass);
+        box-shadow: 0 5px 10px var(--glass);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        overflow:hidden;
+        background: linear-gradient(145deg, var(--primary), var(--secondary));
+    }
+     /*shimmer*/
+    .welcomeMessage::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(120deg, var(--glass) 0%, var(--glass) 50%, var(--glass) 100%);       
+        transform: skewX(-45deg);
+        animation: shimmer 10s infinite, glassFloat 8s ease-in-out infinite;
+        filter: blur(40px);
+        pointer-events:none;        /*stops from interfering with mouse events when its animating*/
+    }
+    
+    .welcomeMessage:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 80%, var(--secondary) 0%, transparent 50%), radial-gradient(circle at 80% 20%, var(--grey) 0%, transparent 50%), radial-gradient(circle at 40% 40%, var(--primary) 0%, transparent 50%);
+        animation: float 20s ease-in-out infinite;
+        z-index: 0;
+    }
+    @@keyframes glassFloat {
+        0% {
+            transform: translate(0px, 0px) rotate(0deg);
+        }
+        25% {
+            transform: translate(5px, -5px) rotate(0.5deg);
+        }
+        50% {
+            transform: translate(0px, -10px) rotate(-0.5deg);
+        }
+        75% {
+            transform: translate(-5px, -5px) rotate(0.3deg);
+        }
+        100% {
+            transform: translate(0px, 0px) rotate(0deg);
+        }
+    }
+
+    @@keyframes gradientShift{
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    @@keyframes fadeSlideIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@keyframes shimmer {
+        0% {
+            left: -75%;
+        }
+        100% {
+            left: 125%;
+        }
+    }
+
+
+    .welcomeMessage h1,
+    .welcomeMessage p{
+        animation: fadeSlideIn 2s ease forwards, glassFloat 8s ease-in-out infinite;
+        
+    }
+    .welcomeMessage a {
+        z-index: 1;
+    }
+
+    .btnBlog {
+        background: linear-gradient(90deg, var(--secondary), var(--grey));
+        border: none;
+        border-radius: 12px;
+        padding: 10px 20px;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 5px 10px var(--glass);
+        transition: transform 0.5s ease-in-out, box-shadow 0.2s ease;
+        
+    }
+
+    .btnBlog:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px var(--glass);
+    }
+
+
+    .recentPosts{
+        position: relative;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        background: var(--glass);
+        border-radius: 20px;
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 5px 10px var(--glass);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        overflow: hidden;
+        margin:10px;
+    }
+    
+
+    .blogPosts {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .blogPosts li {
+        background: var(--glass);
+        border-radius: 15px;
+        padding: 15px;
+        transition: transform 0.3s ease;
+    }
+
+    .blogPosts li:hover {
+        transform: translateY(-2px);
+    }
+    
+   
+</style>
+
+
+<div class="welcomeMessage card">
+    <h1>Travis Musson</h1>
+    <p>Im a software engineer looking to create modern authentic websites and views.</p>
+    <p><a class="btnBlog btn btn-primary" asp-area="" asp-controller="Home" asp-action="CreateBlog">Create a Blog post</a></p>
+</div>
+<div class="recentPosts card">
+    <h1 class="card-title">Recent Posts</h1>
+    <div class="container">
+        <ul class="blogPosts">
+            <li class="list-group">
+
+            </li>
+
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,140 @@
+﻿<style>
+    :root {
+        --primary: rgb(55, 57, 56);
+        --secondary: rgb(66, 91, 76);
+        --grey: rgb(124, 129, 126);
+        --light-grey: rgb(105, 119, 113);
+        --glass: rgba(255, 255, 255, 0.1);
+        --glass-border: rgba(255, 255, 255, 0.5);
+    }
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: 'FiraCode Nerd Font Mono';
+        font-weight: normal;
+        box-sizing: border-box;
+        color:white;
+    }
+
+    body {
+        background: linear-gradient(145deg, var(--primary), var(--secondary));
+        background-size: 200% 200%;
+        width: 100%;
+        height: 100vh;
+        animation: bgShift 10s ease infinite
+    }
+
+    @@keyframes bgShift{
+        0% { background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+    }
+
+    .navbar{
+        backdrop-filter:blur(20px);
+        -webkit-backdrop-filter:blur(10px);
+        background: var(--glass);
+        border-radius: 0 0 15px 15px;
+        border-bottom:1px solid var(--glass-border);
+        box-shadow: 0 5px 10px var(--grey);
+
+    }
+
+    .navbar .nav-link{
+        background: #FFFFFF;
+        -webkit-background-clip: text; /* clip background to text shape */
+        -webkit-text-fill-color: transparent; /* make text transparent so background shows */
+        transition: all 0.5s ease-in-out;
+        
+    }
+
+    .navbar .nav-link:hover{
+        background: linear-gradient(145deg, #437156, #FFFFFF);
+        background-size: 200% 150%;
+        -webkit-background-clip: text; /* clip background to text shape */
+        -webkit-text-fill-color: transparent; /* make text transparent so background shows */
+        transform: translateY(-2px);
+        transition: all 0.5s ease-in-out;
+        animation: gradientShift 5s ease-in-out infinite;
+
+    }
+
+    @@keyframes gradientShift{
+        0% {background-position: 0% 50%;}
+        50% {background-position: 50% 100%;}
+        100% {background-position: 0% 50%;}
+    }
+
+
+    .footer{
+        backdrop-filter:blur(20px);
+        background: linear-gradient(145deg, var(--glass), var(--glass));
+        border-radius:15px 0;
+        
+        /*border-top: 1px solid var(--glass-border);*/
+        /*outline: 1px solid var(--glass-border);*/
+        box-shadow: 0 5px 10px var(--grey);
+        text-align:center;
+
+    }
+
+
+    
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Home Page</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SimpleBlogMVCPrac.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-gradient box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Logo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Blog">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer text-muted">
+        <div class="container">
+            &copy; 2025 - Travis Musson - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

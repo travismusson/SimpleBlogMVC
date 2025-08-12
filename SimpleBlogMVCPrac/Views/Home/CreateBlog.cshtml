@@ -1,0 +1,169 @@
+﻿@{
+    ViewData["Title"] = "Create Blog Page";
+}
+<style>
+    /*Some root variables that will be utilized throughout css styling*/
+    :root {
+        --primary: rgb(55, 57, 56);
+        --secondary: rgb(66, 91, 76);
+        --grey: rgb(124, 129, 126);
+        --light-grey: rgb(105, 119, 113);
+        --glass: rgba(255, 255, 255, 0.1);
+        --glass-border: rgba(255, 255, 255, 0.5);
+    }
+    /*Global properties (universal selector)*/
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: linear-gradient(145deg, var(--primary), var(--secondary));
+        background-size: 200% 200%;
+        width: 100%;
+        height: 100vh;
+        animation: bgShift 10s ease infinite;
+        color:white;
+
+    }
+
+
+   .blogForm{
+       background: var(--glass);
+       border:var(--glass-border);
+       border-radius:20px;
+       padding:40px;
+       backdrop-filter: blur(20px);
+       -webkit-backdrop-filter: blur(20px);
+       box-shadow: 0 5px 10px var(--glass);
+
+   }
+
+   .blogForm input.form-control{
+       background:var(--glass);
+       border: var(--glass-border);
+       color: white;
+       padding: 10px 10px;
+       border-radius: 10px;
+       backdrop-filter: blur(20px);
+       -webkit-backdrop-filter: blur(20px);
+       box-shadow: 0 5px 10px var(--glass);
+       transition: all 0.5s ease-in-out;
+   }
+
+   #blogContent{
+       min-height: 200px;
+       background: var(--glass);
+       border:var(--glass-border);
+       color: white;
+       transition: all 0.5s ease-in-out;
+       padding: 20px;
+       backdrop-filter: blur(20px);
+       -webkit-backdrop-filter: blur(20px);
+       box-shadow: 0 5px 10px var(--glass);
+       transition: all 0.5s ease-in-out;
+	   resize: vertical;
+   }
+   /*
+   #blogContent:focus{
+       border:var(--glass-border);
+       outline: var(--glass-border);
+   }
+   */
+   .blogForm input.form-control:focus, .blogForm textarea.form-control:focus{
+       border-color: var(--glass-border);
+       box-shadow: 0 5px 10px var(--glass);
+       outline:none;
+       background: var(--glass);
+       transition: all 0.5s ease-in-out;
+	   transform: translateY(-2px);
+    }
+
+   .blogForm textarea::placeholder, .blogForm input::placeholder{
+       color:white;
+   }
+
+  .blogForm button{
+       /*background: linear-gradient(145deg, var(--secondary), var(--grey));*/
+	   background: linear-gradient(45deg, var(--secondary), var(--grey));
+       background-size: 200% 200%;
+       position:relative;
+       backdrop-filter:blur(20px);
+       -webkit-backdrop-filter:blur(20px);
+       border:1px solid var(--glass-border);
+       border-radius: 20px;
+       overflow: hidden;
+       transition: all 0.5s ease-in-out;
+       animation: buttonGradient 5s ease-in-out infinite;
+       /*animation: buttonShift 0.5s ease-in-out infinite;*/
+
+  }
+
+   .blogForm button:before{
+       content:'';
+       position:absolute;
+       top:0;
+       left:-100%;
+       width: 100%;
+       height: 100%;
+       background: linear-gradient(90deg, var(--glass), var(--glass), var(--glass));
+       backdrop-filter:blur(20px);
+       border-radius: 20px;
+       -webkit-backdrop-filter:blur(20px);
+       transition: left 0.5s ease;
+   }
+
+   .blogForm button:after{
+       animation: buttonShift 1s ease-in-out infinite;
+   }
+
+   .blogForm button:hover{
+       transform: translateY(-2px);
+       box-shadow: 0 5px 10px var(--glass);
+       border-color: var(--glass-border);
+       transition:all 0.5s ease-in-out;
+   }
+
+   .blogForm button:hover:before{
+       left:100%;
+   }
+   
+   .blogForm button:active{
+       transform:translateY(-1px);
+   }
+   /*button background and body background shifting to give nice color animation*/
+    @@keyframes buttonGradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @@keyframes bgShift {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+</style>
+
+<div>
+    <form class="blogForm" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="blogTitle" class="form-label">Title of Blog:</label>
+            <input type="text" class="form-control" id="blogTitle" name="blogTitle" placeholder="Give your blog a Title!"/>
+        </div>
+        <div class="mb-3">
+            <label for="blogContent" class="form-label">Type Something:</label>
+            <textarea class="form-control" id="blogContent" name="blogContent" placeholder="Write your Content here!"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit" value="blogPost">Post Blog!</button>
+    </form>
+</div>
