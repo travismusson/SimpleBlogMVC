@@ -17,10 +17,11 @@ namespace SimpleBlogMVCPrac.Controllers
             _logger = logger;
             this.dbContext = dbContext;
         }
-
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var allBlogs = await dbContext.BlogPost.ToListAsync();
+            return View(allBlogs);
         }
         /*
         public IActionResult Blog()     //httpget
@@ -76,11 +77,25 @@ namespace SimpleBlogMVCPrac.Controllers
                 await dbContext.BlogPost.AddAsync(blogEntity);  //add the blog entity to the database context
                 
                 await dbContext.SaveChangesAsync();        //required to showcase changes to the database, also changed to async
-                Console.WriteLine("Success: Created Entity");     //temp
-                return Ok(blogEntity);         //returns the 200 success status and the blog entity that was created
+                //Console.WriteLine("Success: Created Entity");     //temp
+                //return Ok(blogEntity);         //returns the 200 success status and the blog entity that was created
+                return RedirectToAction("BlogDetail", "Home", new { id =  blogEntity.Id});
             }
             return View(); // If model state is invalid, return the same view with the model
         }
+
+        public async Task<IActionResult> BlogDetail(int id)     //gonna use the blog id to view more detail about the blog post
+        {
+            var blog = await dbContext.BlogPost.FindAsync(id);      //find the blog post by id
+            if (blog == null)      //if the blog post is not found, return not found
+            {
+                return NotFound();
+            }
+            return View(blog);      //return the blog post to the view
+        }
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

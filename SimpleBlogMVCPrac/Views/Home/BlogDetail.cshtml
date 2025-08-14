@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = @Model.BlogTitle;
+}
+
+@model SimpleBlogMVCPrac.Models.Entity.Blog;
+<style>
+    /*Some root variables that will be utilized throughout css styling*/
+    :root {
+        --primary: rgb(55, 57, 56);
+        --secondary: rgb(66, 91, 76);
+        --grey: rgb(124, 129, 126);
+        --light-grey: rgb(105, 119, 113);
+        --glass: rgba(255, 255, 255, 0.1);
+        --glass-border: rgba(255, 255, 255, 0.5);
+    }
+    /*Global properties (universal selector)*/
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: linear-gradient(145deg, var(--primary), var(--secondary));
+        background-size: 200% 200%;
+        width: 100%;
+        height: 100vh;
+        animation: bgShift 10s ease infinite;
+        color: white;
+    }
+
+    .blogContainer{
+        border: 1px solid var(--glass);
+        padding: 10px;
+    }
+
+    .blogBody{
+        padding:10px;
+    }
+
+    .blogBody a{
+        background: linear-gradient(250deg, var(--primary), var(--secondary));
+        border: 1px solid var(--glass-border);
+        transition: all 0.5s ease-in-out;
+    }
+
+    .blogBody a:hover{
+        border: 1px solid var(--glass);
+        transform: translateY(-2px);
+    }
+    
+</style>
+
+<div class="blogContainer" >
+    <div class="blogBody" >
+        <h1 >@Model.BlogTitle </h1 >
+        <p > <strong > Published on:</strong > @Model.CreatedAt.ToString("MMMM d d , yyyy") </p >
+    <div class="blogContent" >
+        <p >@Model.BlogContent </p >
+    </div >
+        <a class="btn btn-secondary" href="@Url.Action("Index", "Home")" > Back to Posts</a >
+    </div >
+</div >

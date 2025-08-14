@@ -90,6 +90,16 @@
         }
     }
 
+    .blogPreview{
+        display:-webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;      /*shows only 3 lines of truncated text*/
+        overflow:hidden;
+        text-overflow: ellipsis;   /*adds ... at end of trucated text*/
+        height: 75px;
+        line-height: 1.5rem;
+    }
+
 </style>
 <!-- This is temp styling will adjust when i have fully functional Crud   update: now have crud functionality, gonna now transform into cards--> 
 <div>
@@ -134,8 +144,8 @@
         <img src="" alt="Test Img" />
         <div class="card-body">
             <h5 class="card-title">@blog.BlogTitle</h5>
-            <p class="card-text">@blog.BlogContent</p>
-            <a href="#" class="btn btn-primary">View</a>
+            <p class="card-text blogPreview">@blog.BlogContent</p>
+            <a href="@Url.Action("BlogDetail", "Home", new { id = blog.Id })" class="btn btn-primary">Read More</a>
         </div>
     </div>
 }
