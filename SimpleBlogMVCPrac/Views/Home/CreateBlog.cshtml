@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Create Blog Page";
 }
+
+@model SimpleBlogMVCPrac.Models.AddBlogDto;
 <style>
     /*Some root variables that will be utilized throughout css styling*/
     :root {
@@ -158,11 +160,11 @@
     <form class="blogForm" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="blogTitle" class="form-label">Title of Blog:</label>
-            <input type="text" class="form-control" id="blogTitle" name="blogTitle" placeholder="Give your blog a Title!"/>
+            <input type="text" class="form-control" id="blogTitle" name="blogTitle" placeholder="Give your blog a Title!" asp-for="BlogTitle"/>
         </div>
         <div class="mb-3">
             <label for="blogContent" class="form-label">Type Something:</label>
-            <textarea class="form-control" id="blogContent" name="blogContent" placeholder="Write your Content here!"></textarea>
+            <textarea class="form-control" id="blogContent" name="blogContent" placeholder="Write your Content here!" asp-for="BlogContent"></textarea>
         </div>
         <button class="btn btn-primary" type="submit" value="blogPost">Post Blog!</button>
     </form>

@@ -1,0 +1,143 @@
+﻿@{
+    ViewData["Title"] = "Blog Page";
+}
+
+@model List<SimpleBlogMVCPrac.Models.Entity.Blog>;              //wrap the model in a list
+<style>
+    :root {
+        --primary: rgb(55, 57, 56);
+        --secondary: rgb(66, 91, 76);
+        --grey: rgb(124, 129, 126);
+        --light-grey: rgb(105, 119, 113);
+        --glass: rgba(255, 255, 255, 0.1);
+        --glass-border: rgba(255, 255, 255, 0.5);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        background: linear-gradient(145deg, var(--primary), var(--secondary));
+        background-size: 200% 200%;
+        width: 100%;
+        height: 100vh;
+        animation: bgShift 10s ease infinite
+    }
+
+    @@keyframes bgShift {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .card{
+        padding:20px;
+        background:radial-gradient(25deg, var(--primary), var(--secondary));
+        width: 100%;
+        backdrop-filter:blur(20px);
+        -webkit-backdrop-filter:blur(20px);
+        border: 1px solid var(--glass);
+    }
+
+    .btn{
+        background: radial-gradient(45deg, var(--primary), var(--secondary));
+        backdrop-filter:blur(20px);
+        border: 1px solid var(--glass-border);
+        -webkit-backdrop-filter:blur(20px);
+        overflow: hidden;
+    }
+
+    .btn:hover{
+        background: linear-gradient(120deg, var(--primary), var(--secondary));
+        border: 1px solid var(--glass);
+    }
+
+    .btn:before{
+        content:'';
+        position:absolute;
+        top:0;
+        left:-150%;
+        height:100%;
+        width:100%;
+        background: linear-gradient(120deg, var(--glass) 0%, var(--glass-border) 50%, var(--glass) 100%);
+        pointer-events:none;
+        transform: skewX(-5deg);
+        filter:blur(20px);
+    }
+
+    .btn:hover:before{
+        animation: shimmer 4s ease-in-out infinite;
+        
+    }
+
+    @@keyframes shimmer {
+        0%{
+            left: -150%;
+        }
+        100%{
+            left:150%;
+        }
+    }
+
+</style>
+<!-- This is temp styling will adjust when i have fully functional Crud   update: now have crud functionality, gonna now transform into cards--> 
+<div>
+    <h1>All Blogs</h1>
+</div>
+<!--    Rerrfactored for containers
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                BlogTitle
+            </th>
+            <th>
+                Created At
+            </th>
+            <th>
+                Updated At
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (var blog in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("GetBlogById", "Home", new { id = blog.Id })">@blog.BlogTitle</a>
+                </td>
+                <td>
+                    @blog.CreatedAt.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @blog.UpdatedAt.ToString("dd/MM/yyyy")
+                </td>
+            </tr>
+		}
+</table>
+-->
+@foreach (var blog in Model)
+{
+    <div class="card mb-4">
+        <img src="" alt="Test Img" />
+        <div class="card-body">
+            <h5 class="card-title">@blog.BlogTitle</h5>
+            <p class="card-text">@blog.BlogContent</p>
+            <a href="#" class="btn btn-primary">View</a>
+        </div>
+    </div>
+}
+
+

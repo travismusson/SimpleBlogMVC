@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SimpleBlogMVCPrac.Models;
+using SimpleBlogMVCPrac.Models.Entity;
 namespace SimpleBlogMVCPrac.Data
 {
     public class BlogDbContext : DbContext
@@ -9,7 +9,7 @@ namespace SimpleBlogMVCPrac.Data
 
         }
 
-        public DbSet<BlogDto> BlogPost { get; set; }
+        public DbSet<Blog> BlogPost { get; set; }
 
     }
 }
