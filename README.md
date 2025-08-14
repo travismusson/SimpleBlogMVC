@@ -17,11 +17,14 @@
 Landing Page:
 <img width="1056" height="920" alt="image" src="https://github.com/user-attachments/assets/e8460914-b804-4b0e-a10e-8b0429fc7839" />
 
+
 View All Blogs Page:
-<img width="1024" height="1378" alt="image" src="https://github.com/user-attachments/assets/40868f0e-fda0-42fc-911d-d456698080da" />
+<img width="1051" height="1346" alt="image" src="https://github.com/user-attachments/assets/f12c9ba0-c99c-43b1-8cfe-37b8c3ea9ee2" />
+
 
 Blog Detail Page:
 <img width="1031" height="968" alt="image" src="https://github.com/user-attachments/assets/ae64341f-4237-423f-9516-099d1b645ebe" />
+
 
 Blog Create Page:
 <img width="1064" height="695" alt="image" src="https://github.com/user-attachments/assets/d7ed6022-b13c-4d56-83ab-0f4856dcec62" />
