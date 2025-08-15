@@ -21,12 +21,20 @@ Landing Page:
 
 
 View All Blogs Page:
-<img width="1051" height="1346" alt="image" src="https://github.com/user-attachments/assets/f12c9ba0-c99c-43b1-8cfe-37b8c3ea9ee2" />
+<img width="2325" height="1422" alt="image" src="https://github.com/user-attachments/assets/0ef3211b-f7b8-45e0-b36c-904261c67cc8" />
 
 
 Blog Detail Page:
-<img width="1031" height="968" alt="image" src="https://github.com/user-attachments/assets/ae64341f-4237-423f-9516-099d1b645ebe" />
+<img width="2539" height="1291" alt="image" src="https://github.com/user-attachments/assets/5a7a980a-d704-47bf-89b2-e41632f4a0b5" />
 
 
 Blog Create Page:
 <img width="1064" height="695" alt="image" src="https://github.com/user-attachments/assets/d7ed6022-b13c-4d56-83ab-0f4856dcec62" />
+
+
+Blog Update Page:
+<img width="2557" height="1163" alt="image" src="https://github.com/user-attachments/assets/330e1b36-926d-4070-8336-5800713dff61" />
+
+
+Blog Deletion Confirmation: (Basic implementation)
+<img width="2541" height="1185" alt="image" src="https://github.com/user-attachments/assets/b65ddcca-2fec-4445-8475-4d99af50b95c" />
