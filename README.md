@@ -8,10 +8,12 @@
 - View Single Blog In Detail
 - Create a Blog
 - Save Blog in SQL Server
+- Update Blog
+- Delete Blog
 
 *Planned Features*
-- Updating Blogs
-- Deleting Blogs
+- ~~Updating Blogs~~ (added)
+- ~~Deleting Blogs~~ (added)
 
 
 Landing Page:
