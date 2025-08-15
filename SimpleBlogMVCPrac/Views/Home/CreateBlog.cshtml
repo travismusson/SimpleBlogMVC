@@ -2,7 +2,7 @@
     ViewData["Title"] = "Create Blog Page";
 }
 
-@model SimpleBlogMVCPrac.Models.AddBlogDto;
+@model SimpleBlogMVCPrac.Models.BlogDto;
 <style>
     /*Some root variables that will be utilized throughout css styling*/
     :root {
@@ -42,7 +42,7 @@
 
    }
 
-   .blogForm input.form-control{
+   .blogForm .form-control{
        background:var(--glass);
        border: var(--glass-border);
        color: white;
@@ -73,7 +73,7 @@
        outline: var(--glass-border);
    }
    */
-   .blogForm input.form-control:focus, .blogForm textarea.form-control:focus{
+   .blogForm .form-control:focus, .blogForm .form-control:focus{
        border-color: var(--glass-border);
        box-shadow: 0 5px 10px var(--glass);
        outline:none;
@@ -86,13 +86,20 @@
        color:white;
    }
 
+    .blogForm .form-control:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px var(--glass);
+        border-color: var(--glass-border);
+        transition: all 0.5s ease-in-out;
+    }
+
   .blogForm button{
        /*background: linear-gradient(145deg, var(--secondary), var(--grey));*/
 	   background: linear-gradient(45deg, var(--secondary), var(--grey));
        background-size: 200% 200%;
        position:relative;
-       backdrop-filter:blur(20px);
-       -webkit-backdrop-filter:blur(20px);
+       backdrop-filter:blur(50px);
+       -webkit-backdrop-filter:blur(50px);
        border:1px solid var(--glass-border);
        border-radius: 20px;
        overflow: hidden;
@@ -113,7 +120,7 @@
        backdrop-filter:blur(20px);
        border-radius: 20px;
        -webkit-backdrop-filter:blur(20px);
-       transition: left 0.5s ease;
+       transition: left 1s ease;
    }
 
    .blogForm button:after{

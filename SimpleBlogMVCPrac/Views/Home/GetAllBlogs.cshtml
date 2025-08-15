@@ -48,6 +48,26 @@
         backdrop-filter:blur(20px);
         -webkit-backdrop-filter:blur(20px);
         border: 1px solid var(--glass);
+        border-radius: 20px;
+    }
+
+    card img{
+		border-radius: 20px;
+        height: 200px;
+		width: 200px;
+        /*fit image to cover*/
+		object-fit: cover;
+    }
+
+
+    .card-body {
+        background: var(--glass);
+        border: var(--glass-border);
+        border-radius: 20px;
+        padding: 40px;
+        backdrop-filter: blur(50px);
+        -webkit-backdrop-filter: blur(50px);
+        box-shadow: 0 5px 10px var(--glass);
     }
 
     .btn{
@@ -100,6 +120,8 @@
         line-height: 1.5rem;
     }
 
+
+
 </style>
 <!-- This is temp styling will adjust when i have fully functional Crud   update: now have crud functionality, gonna now transform into cards--> 
 <div>
@@ -145,6 +167,7 @@
         <div class="card-body">
             <h5 class="card-title">@blog.BlogTitle</h5>
             <p class="card-text blogPreview">@blog.BlogContent</p>
+            <p class="card-text">Created At: @blog.CreatedAt.ToString("dd/MM/yyyy")</p>
             <a href="@Url.Action("BlogDetail", "Home", new { id = blog.Id })" class="btn btn-primary">Read More</a>
         </div>
     </div>

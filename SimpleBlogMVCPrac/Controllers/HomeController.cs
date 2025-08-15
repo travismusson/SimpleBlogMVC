@@ -60,7 +60,7 @@ namespace SimpleBlogMVCPrac.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateBlog(AddBlogDto addBlogDto)      //made this asyncronous
+        public async Task<IActionResult> CreateBlog(BlogDto addBlogDto)      //made this asyncronous
         {
             
             if (ModelState.IsValid)     //checks models state to see if its valid
@@ -95,6 +95,48 @@ namespace SimpleBlogMVCPrac.Controllers
         }
 
 
+        //adding an updating command
+        [HttpGet]
+        public async Task<IActionResult> UpdateBlog(int id)
+        {
+            var blog = await dbContext.BlogPost.FindAsync(id);
+            if (blog == null)
+            {
+                return NotFound();
+            }
+            return View(blog);
+        }
+        //adding an updating command
+        [HttpPost]
+        public async Task<IActionResult> UpdateBlog(int id, BlogDto BlogDto)
+        {
+            var blog = await dbContext.BlogPost.FindAsync(id);
+            if (blog == null)
+            {
+                return NotFound();
+            }
+            blog.BlogTitle = BlogDto.BlogTitle;
+            blog.BlogContent = BlogDto.BlogContent;
+            blog.CreatedAt = BlogDto.CreatedAt;
+            blog.UpdatedAt = BlogDto.UpdatedAt;
+            await dbContext.SaveChangesAsync();
+            return RedirectToAction("BlogDetail", "Home", new { id = blog.Id });
+        }
+
+
+        //adding a delete command
+        [HttpGet]
+        public async Task<IActionResult> DeleteBlog(int id)
+        {
+            var blog = await dbContext.BlogPost.FindAsync(id);
+            if (blog == null)
+            {
+                return NotFound();
+            }
+            dbContext.BlogPost.Remove(blog);
+            await dbContext.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
